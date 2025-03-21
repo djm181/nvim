@@ -50,12 +50,27 @@ return {
       ensure_installed = {
         "lua_ls",
         "rust_analyzer",
-        "ruby_lsp",
+        "solargraph",
         "eslint",
       },
       handlers = {
         function(server_name)
-          require('lspconfig')[server_name].setup({})
+          if server_name == "solargraph" then
+            require('lspconfig').solargraph.setup({
+              cmd = { "nc", "localhost", os.getenv("SOLARGRAPH_PORT") },
+              -- settings = {
+              --   solargraph = {
+              --     externalServer = {
+              --       host = "localhost",
+              --       port = os.getenv("SOLARGRAPH_PORT")
+              --     },
+              --     transport = "socket"
+              --   }
+              -- }
+            })
+          else
+            require('lspconfig')[server_name].setup({})
+          end
         end,
       }
     })
@@ -69,7 +84,10 @@ return {
           vim.snippet.expand(args.body)
         end,
       },
-      mapping = cmp.mapping.preset.insert({}),
+      mapping = cmp.mapping.preset.insert({
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+      }),
     })
   end
 }
