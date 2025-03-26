@@ -1,4 +1,10 @@
-
+vim.opt.listchars = {
+  eol = "↩",
+  tab = ">-",
+  lead = "·",
+  trail = "•",
+}
+vim.opt.list = true
 vim.o.autoindent = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 2
