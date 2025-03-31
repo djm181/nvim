@@ -14,3 +14,4 @@ vim.o.wildmode = "longest,list"
 vim.o.number = true
 vim.o.relativenumber = true
 vim.cmd([[autocmd FileType ruby setlocal indentkeys-=.]])
+vim.cmd([[autocmd FileType netrw setlocal number relativenumber]])
