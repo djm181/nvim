@@ -68,6 +68,11 @@ return {
               --   }
               -- }
             })
+          elseif server_name == "ruby_lsp" then
+            require('lspconfig').ruby_lsp.setup {
+              mason = false,
+              cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") }
+            }
           else
             require('lspconfig')[server_name].setup({})
           end
