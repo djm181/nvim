@@ -57,7 +57,7 @@ return {
         function(server_name)
           if server_name == "solargraph" then
             require('lspconfig').solargraph.setup({
-              cmd = { "nc", "localhost", os.getenv("SOLARGRAPH_PORT") },
+              -- cmd = { "nc", "localhost", os.getenv("SOLARGRAPH_PORT") },
               -- settings = {
               --   solargraph = {
               --     externalServer = {
