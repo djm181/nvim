@@ -3,7 +3,7 @@ return {
   config = function()
     local augment = require("augment")
     vim.keymap.set("i", "<C-y>", function()
-      augment:Accept()
+      vim.fn['augment#Accept']()
     end)
   end,
 }
